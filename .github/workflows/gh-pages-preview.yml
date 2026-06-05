@@ -1,0 +1,91 @@
+# Builds the Hugo site and deploys it to GitHub Pages to preview a fork.
+#
+# This file is meant to live ONLY on the fork's default branch (main), NOT on a
+# feature/PR branch, so it never shows up in an upstream pull request.
+#
+# Served at: https://<user>.github.io/<repo>/
+#   github.com/alamb/parquet-site -> https://alamb.github.io/parquet-site/
+#
+# One-time setup in your fork:
+#   1. Actions tab -> enable workflows (forks disable them by default).
+#   2. Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
+#
+# To preview a branch:
+#   Actions -> "Preview on GitHub Pages" -> Run workflow, and pick/enter the
+#   branch to build in the "ref" box (defaults to alamb/update_v2). The workflow
+#   itself runs from `main` (where this file lives) but checks out and builds the
+#   branch you name.
+
+name: Preview on GitHub Pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Branch or ref to build and preview"
+        default: "alamb/update_v2"
+        required: true
+
+# Permissions required by actions/deploy-pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; don't cancel an in-progress one.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref }}
+          submodules: recursive   # needed for the assets/parquet-format submodule
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.152.0'
+          extended: true
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - run: npm install
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build
+        # configure-pages exposes the correct base_url (e.g.
+        # https://alamb.github.io/parquet-site) so links/assets resolve
+        # under the /parquet-site/ subpath.
+        run: hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-22.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
