@@ -136,11 +136,11 @@ it (with a degraded experience).
 | Size statistics | [2.10.0] | [2.9.0..2.10.0] | [[Approved 2023-11-14]] |
 | [Geospatial statistics] | [2.11.0] | [2.10.0..2.11.0] | [[Approved 2025-02-09]] |
 | [Binary protocol extensions] | [2.11.0] | [2.10.0..2.11.0] | [[Approved 2024-09-06]] |
-| IEEE 754 Column Order | not yet released | [#514] | [[Approved 2026-05-26]] |
+| IEEE 754 total order and NaN counts | not yet released | [#514] | [[Approved 2026-05-26]] |
 | STRING | [1.0.0] | [1.0.0][tree-1.0.0] |  |
 | ENUM | [2.0.0] | [1.0.0..2.0.0] |  |
 | UUID | [2.6.0] | [2.5.0..2.6.0] |  |
-| 8, 16, 32, 64 bit signed and unsigned INT | [2.2.0] | [2.1.0..2.2.0] |  |
+| Signed and unsigned integer logical types | [2.2.0] | [2.1.0..2.2.0] |  |
 | DECIMAL (INT32) | [2.1.0] | [2.0.0..2.1.0] |  |
 | DECIMAL (INT64) | [2.1.0] | [2.0.0..2.1.0] |  |
 | DECIMAL (BYTE_ARRAY) | [2.1.0] | [2.0.0..2.1.0] |  |
