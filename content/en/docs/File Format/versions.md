@@ -79,43 +79,48 @@ format version in which each became available.
 
 * **V1**: the original Parquet format (version 1.0).
 * **V2**: Parquet format version 2.0.
-* **Not yet released**: Approved additions to the specification that are not yet
-  part of a released format version.
+* **V3**: a potential future Parquet format version 3.0.
+* **Not yet released**: Approved or proposed additions to the specification that
+  are not yet part of a released format version.
 
 The **Notes** column links to the Apache `[VOTE]` thread that adopted the
 feature.
 
-| Feature                                  | V1 | V2 | Not yet released | Released in | Source | Notes |
-|------------------------------------------| ---- | ---- | ------------------ | ----------------------------- | --- | ------------------------- |
-| BOOLEAN                                  | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| INT32                                    | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| INT64                                    | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| INT96 (deprecated)                       | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| FLOAT                                    | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| DOUBLE                                   | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| BYTE_ARRAY                               | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| FIXED_LEN_BYTE_ARRAY                     | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| Data Page V1                             | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| Data Page V2                             |  | ✅ |  | [2.0.0] | [1.0.0..2.0.0] |  |
-| [PLAIN]                                  | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| [PLAIN_DICTIONARY]                       | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| [RLE]                                    | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| BIT_PACKED (deprecated)                  | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| [RLE_DICTIONARY]                         |  | ✅ |  | [2.0.0] | [1.0.0..2.0.0] |  |
-| [DELTA_BINARY_PACKED]                    |  | ✅ |  | [2.0.0] | [1.0.0..2.0.0] |  |
-| [DELTA_LENGTH_BYTE_ARRAY]                |  | ✅ |  | [2.0.0] | [1.0.0..2.0.0] |  |
-| [DELTA_BYTE_ARRAY]                       |  | ✅ |  | [2.0.0] | [1.0.0..2.0.0] |  |
-| [BYTE_STREAM_SPLIT]                      |  | ✅ |  | [2.8.0] | [2.7.0..2.8.0] | [[Approved 2019-12-03]] |
-| BYTE_STREAM_SPLIT<br/>(Additional Types) |  | ✅ |  | [2.11.0] | [2.10.0..2.11.0] | [[Approved 2024-03-18]] |
-| UNCOMPRESSED                             | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| SNAPPY                                   | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| GZIP                                     | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| LZO                                      | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
-| BROTLI                                   |  | ✅ |  | [2.4.0] | [2.3.1..2.4.0] |  |
-| LZ4 (deprecated)                         |  | ✅ |  | [2.4.0] | [2.3.1..2.4.0] |  |
-| LZ4_RAW                                  |  | ✅ |  | [2.9.0] | [2.8.0..2.9.0] |  |
-| ZSTD                                     |  | ✅ |  | [2.4.0] | [2.3.1..2.4.0] |  |
-| [Modular encryption]                     |  | ✅ |  | [2.7.0] | [2.6.0..2.7.0] | [[Approved 2019-01-16]] |
+| Feature                                  | V1 | V2 | V3 | Not yet released | Released in | Source | Notes |
+|------------------------------------------| ---- | ---- | ---- | ------------------ | ----------------------------- | --- | ------------------------- |
+| BOOLEAN                                  | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| INT32                                    | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| INT64                                    | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| INT96 (deprecated)                       | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| FLOAT                                    | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| DOUBLE                                   | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| BYTE_ARRAY                               | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| FIXED_LEN_BYTE_ARRAY                     | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| Data Page V1                             | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| Data Page V2                             |  | ✅ | ✅ |  | [2.0.0] | [1.0.0..2.0.0] |  |
+| [PLAIN]                                  | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| [PLAIN_DICTIONARY]                       | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| [RLE]                                    | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| BIT_PACKED (deprecated)                  | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| [RLE_DICTIONARY]                         |  | ✅ | ✅ |  | [2.0.0] | [1.0.0..2.0.0] |  |
+| [DELTA_BINARY_PACKED]                    |  | ✅ | ✅ |  | [2.0.0] | [1.0.0..2.0.0] |  |
+| [DELTA_LENGTH_BYTE_ARRAY]                |  | ✅ | ✅ |  | [2.0.0] | [1.0.0..2.0.0] |  |
+| [DELTA_BYTE_ARRAY]                       |  | ✅ | ✅ |  | [2.0.0] | [1.0.0..2.0.0] |  |
+| [BYTE_STREAM_SPLIT]                      |  | ✅ | ✅ |  | [2.8.0] | [2.7.0..2.8.0] | [[Approved 2019-12-03]] |
+| BYTE_STREAM_SPLIT<br/>(Additional Types) |  | ✅ | ✅ |  | [2.11.0] | [2.10.0..2.11.0] | [[Approved 2024-03-18]] |
+| Adaptive Floating Point (ALP)            |  |  | ✅ | ✅ | not yet released |  |  |
+| Fast Static String Table (FSST)          |  |  | ✅ | ✅ | not yet released |  |  |
+| FastLanes integer encoding               |  |  | ✅ | ✅ | not yet released |  |  |
+| Remove path_in_schema                    |  |  | ✅ | ✅ | not yet released |  |  |
+| UNCOMPRESSED                             | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| SNAPPY                                   | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| GZIP                                     | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| LZO                                      | ✅ | ✅ | ✅ |  | [1.0.0] | [1.0.0][tree-1.0.0] |  |
+| BROTLI                                   |  | ✅ | ✅ |  | [2.4.0] | [2.3.1..2.4.0] |  |
+| LZ4 (deprecated)                         |  | ✅ | ✅ |  | [2.4.0] | [2.3.1..2.4.0] |  |
+| LZ4_RAW                                  |  | ✅ | ✅ |  | [2.9.0] | [2.8.0..2.9.0] |  |
+| ZSTD                                     |  | ✅ | ✅ |  | [2.4.0] | [2.3.1..2.4.0] |  |
+| [Modular encryption]                     |  | ✅ | ✅ |  | [2.7.0] | [2.6.0..2.7.0] | [[Approved 2019-01-16]] |
 
 
 > **Note:** Compression codecs and modular encryption are not strictly gated by
