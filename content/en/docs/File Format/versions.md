@@ -10,7 +10,7 @@ affect compatibility between readers and writers. See the [Implementation status
 specific implementations (arrow, parquet-java, arrow-rs, etc.) support each
 feature.
 
-*Note*: If you find out of date information, please help us improve the accuracy
+*Note*: If you find out-of-date information, please help us improve the accuracy
 of this page by opening an issue or submitting a pull request.
 
 ## Backwards compatible features
@@ -19,8 +19,8 @@ Some features are backwards compatible, which means older readers can still
 **read the file**, though they may have a *degraded experience* — typically they
 ignore new information rather than failing. Examples:
 
-* **Bloom filters**: A reader that does not understand BloomFilters
-  simply ignores metadata that could be used to prune row groups, 
+* **Bloom filters**: a reader that does not understand Bloom filters
+  simply ignores metadata that could be used to prune row groups,
   but still reads the data correctly.
 * **Logical type annotations** such as `VARIANT`: an older reader still sees 
   the underlying physical column (e.g. `BYTE_ARRAY`) and can read the raw bytes, 
@@ -28,7 +28,7 @@ ignore new information rather than failing. Examples:
 
 ## Backwards incompatible features
 
-Some features are backwards **incompatible** -- older software **cannot read
+Some features are backwards **incompatible** — older software **cannot read
 the data** if they are used. Examples:
 
 * **New encodings** (such as the `DELTA_*` encodings, `BYTE_STREAM_SPLIT`, and
@@ -55,7 +55,7 @@ numbers follow [semantic versioning]:
 
 1. The major version of parquet-format corresponds to the 
    [`thrift FileMetadata`] field.
-2. Minor releases (e.g. `2.10.0` to `2.11.0` of parquet-format may add new 
+2. Minor releases (e.g. `2.10.0` to `2.11.0`) of parquet-format may add new
    backwards compatible features, but never breaking ones.
 
 ## Adding new features
@@ -83,8 +83,7 @@ format version in which each became available.
   part of a released format version.
 
 The **Notes** column links to the Apache `[VOTE]` thread that adopted the
-feature. Some are left blank  as older features predate the modern `[VOTE]`
-process and the mailing-list archive.
+feature.
 
 | Feature                                  | V1 | V2 | Not yet released | Released in | Source | Notes |
 |------------------------------------------| ---- | ---- | ------------------ | ----------------------------- | --- | ------------------------- |
