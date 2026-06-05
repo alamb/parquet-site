@@ -1,18 +1,14 @@
-# Website development and deployment
+# Fork of parquet-site
 
-## Staging
-To make a change to the `staging` version of the website:
-1. Make a PR against the `staging` branch in the repository
-2. Once the PR is merged, the `Build and Deploy Parquet Site`
-job in the [deployment workflow](./.github/workflows/deploy.yml) will be run, populating the `asf-staging` branch on this repo with the necessary files.
+This is a fork of [apache/parquet-site](https://github.com/apache/parquet-site) — the source for the [Apache Parquet website](https://parquet.apache.org/) — used to preview in-progress documentation changes.
 
-**Do not directly edit the `asf-staging` branch of this repo**
+## Previewing changes
 
-## Production
+Preview site: **https://alamb.github.io/parquet-site/**
 
-To make a change to the `production` version of the website:
-1. Make a PR against the `production` branch in the repository
-2. Once the PR is merged, the `Build and Deploy Parquet Site`
-job in the [deployment workflow](./.github/workflows/deploy.yml) will be run, populating the `asf-site` branch on this repo with the necessary files.
+To preview a branch:
 
-**Do not directly edit the `asf-site` branch of this repo**
+1. Push the branch to this fork.
+2. Go to **Actions** → **Preview on GitHub Pages** → **Run workflow**, then pick/enter the branch to build in the `ref` box (defaults to `alamb/update_v2`).
+
+The workflow runs from `main` (where the workflow file lives) but checks out and builds the branch you name, then publishes it to the URL above (~90s). Your feature/PR branch never needs the workflow file.
