@@ -72,6 +72,15 @@ jobs:
         # configure-pages exposes the correct base_url (e.g.
         # https://alamb.github.io/parquet-site) so links/assets resolve
         # under the /parquet-site/ subpath.
+        #
+        # canonifyURLs additionally rewrites root-relative URLs written inside
+        # content (e.g. <img src="/blog/alp/foo.png"> in a blog post) to absolute
+        # URLs under base_url. Hugo does not rewrite those on its own, so without
+        # this they resolve to https://alamb.github.io/blog/... and 404 on the
+        # preview. The production site is served at the domain root, so it does
+        # not need this.
+        env:
+          HUGO_CANONIFYURLS: "true"
         run: hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact
