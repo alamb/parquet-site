@@ -89,6 +89,8 @@ support:
     status: full
   encoding-byte-stream-split:
     status: full
+  encoding-alp:
+    status: none
   encoding-byte-stream-split-extended:
     status: none
   compression-uncompressed:
