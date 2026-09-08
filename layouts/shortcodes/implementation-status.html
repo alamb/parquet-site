@@ -269,7 +269,8 @@
 
 {{- /* Collect all features with release_date and group by year */ -}}
 {{- $featuresByYear := dict "2023" (slice) "2024" (slice) "2025" (slice) -}}
-{{- $excludedFeatures := slice "encoding-bit-packed" "compression-lz4-deprecated" "compression-lzo" "logical-enum" "logical-uuid" "logical-bson" "logical-json" "logical-interval" -}}
+{{- /* encoding-alp and logical-file are excluded because parquet-format 2.14.0 is not yet released. */ -}}
+{{- $excludedFeatures := slice "encoding-bit-packed" "compression-lz4-deprecated" "compression-lzo" "logical-enum" "logical-uuid" "logical-bson" "logical-json" "logical-interval" "encoding-alp" "logical-file" -}}
 {{- $includedCategories := slice "compressions" "encodings" "physical-types" "logical-types" -}}
 
 {{- range $categories -}}
