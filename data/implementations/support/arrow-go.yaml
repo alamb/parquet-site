@@ -59,6 +59,8 @@ support:
     status: none
   logical-geography:
     status: none
+  logical-file:
+    status: none
   logical-list:
     status: full
   logical-map:

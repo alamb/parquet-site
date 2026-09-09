@@ -58,6 +58,8 @@ support:
   logical-geography:
     status: full
     since_version_read: "1.19.0"
+  logical-file:
+    status: none
   logical-list:
     status: full
   logical-map:
